@@ -2,6 +2,8 @@
 
 Sonic automata using binaural rendering (WebAudio or Google Resonance).
 
+A **demo** is visible [here](http://www.charlespicasso.fr/proj/simulacre/)
+
 ![ScreenShot](img/screen.jpeg)
 
 ## Synopsis
