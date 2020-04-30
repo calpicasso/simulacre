@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charles Al. Picasso | Simulacre</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Raleway" rel="stylesheet" type="text/css">
+  <!-- icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style>
+
+  canvas { width: 100%; height: 100% }
+
+  body { 
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background: #000;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    color: rgb(220,220,220);
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 28px; 
+    padding: 0px 0px 0px 0px; 
+    margin: 0px 0px 0px 0px; 
+    color: white;
+  }
+
+  h2 {
+    font-size: 14px; 
+    color: #ccc;
+    margin: 5px 0 0px 0;
+  }
+
+  h3 {
+    font-size: 14px; 
+    padding: 0px 0px 0px 0px; 
+    margin: 0px 0px 0px 0px; 
+    color: #ccc;
+  }
+
+  h4 {
+    font-size: 20px; 
+    color: white;
+    margin: 0px 0px 0px 0px;
+  }
+
+  #footer {
+    position: absolute;
+    overflow: auto;
+
+    left: 10px;
+    top: 95%;
+    width: 300px;
+    z-index: 100;
+    display: block;
+  }
+
+  #warning {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display:block;
+  }
+
+  #info {
+    position: absolute;
+
+    margin: 0px 0px 0px 10px;
+    margin-left: 30px;
+    width: 70%;
+    min-width: 300px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+
+    /* height: 50%; */
+    z-index: 100;
+    display:block;
+  }
+
+  #headinfo {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+  }
+
+  #desc {
+    background: rgba(0,0,0, 0.7);
+    border: solid 1px #ffffff;
+    border-color: rgba(255,255,255,0.35);
+    padding: 5px 10px 5px 10px;
+    text-align: justify;
+    visibility: hidden;
+    overflow: auto;
+  }
+
+  .class bordered {
+    font-size: 12px;
+    border: solid 1px #ffffff;
+    border-color: rgba(255,255,255,0.35);
+    color: #ccc;
+  }
+
+  a:link, a:visited, a:active {
+    color: #8dd;
+  }
+
+  a:hover {
+    color: #aff;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+  p { 
+    font-family: "Arial", sans-serif; 
+    font-size: 14px; 
+    margin-top: 2px; 
+    margin-bottom: 10px;
+  }
+
+  button  {
+    cursor:pointer;
+    border:1px solid rgba(255, 255, 255, 0.6);
+    color: #FFF;
+    margin:0 0 0 0px;
+    padding:2px 2px 2px 2px;
+    font-size:12px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  #panel {
+    position: absolute;
+    left: 27%;
+    top: 35%;
+    width: 500px;
+    text-align: center;
+    z-index: 100;
+  }
+  
+  .resonance {
+    font-size: 14px;
+    border: solid 1px #ffffff;
+    border-color: rgba(255,255,255,0.35);
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 30px;
+    color: #ccc;
+    background-color: rgba(0,0,0,0.35);
+  }
+
+  .resonance:hover {
+    background-color: rgba(255, 128, 0, 0.35);
+  }
+
+  a.link {
+    position: absolute;
+    margin-top: 5px;
+    color: #fff;
+  }
+  a.link:hover {
+    color: #faa;
+  }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script>
+<script src="js/smObject.js"></script>
+<script src="js/smMediaSource.js"></script>
+<script src="js/smAudioManager.js"></script>
+<script src="js/smOscillatorPath.js"></script>
+<script src="js/browserInfo.js"></script>
+</head>
+<body>
+  <div id="info">
+    <a class="link" href="http://localhost/www_cpicasso"><i class="fas fa-arrow-left arrow"></i></a>
+    <div id="warning">
+      <h2>Browser Not Supported</h2>
+      <p>Sorry. This mini-app requires new HTML5 / WebAudio support. Please upgrade your browser if you wish to see it. </p>
+    </div>
+    
+    <div id="headinfo">
+      <h1>Simulacre</h1>
+      <h2>Generative sonic poem</h2>
+      <button onclick="showOrHideInfo(this);" style="margin-bottom: 20px" >more</button>
+
+      <script type="application/javascript">
+
+        function showOrHideInfo (butt) {
+
+          var info = document.getElementById ("desc");
+          if (info.style.visibility != 'visible')
+          {
+            info.style.visibility = 'visible';  
+            butt.innerHTML = "less";
+          }
+          else 
+          {
+            info.style.visibility =  'hidden';
+            butt.innerHTML = "more";
+          }
+        }
+
+      </script>
+
+      <div id="desc">
+      <h4>Synopsis</h4>
+      <p><strong>Simulacre</strong> is an a sonic automata, where awkward tiny machines (sounds, textures, whispering and ghosly voices) are disposed pseudo-randomely around a listener, move and oscillate mecanically, enveloping him, sometimes trying to communicate. </p>
+      <p>It tries to depict the cold, dark, virtual space of a digital phantasma, the distorded reality of an active imagination state, where consciousness delve into subconscious images, feelings, memories of sensations, people and project an 'artificial' emotional response, recollected from an interpretation.
+      
+      <h4>Implementation</h4>
+      <p>The movement of the sound is mapped to the visual position in the 2d space. Playing state, intensity amplitude, and also the elevation are mapped to the radius of a sound object. </p>
+      <p>Depending on your configuration the sounds may be spatialised using the <a href="https://resonance-audio.github.io/resonance-audio/">Google Resonance SDK</a> (using their 3rd order ambisonic + binaural renderer) or using the standard WebAudio HRTF PannelNode (still binaural).</p>
+      <h4>Browser Support</h4>
+      <p>It was only tested (and developed) on a Mac, so i cannot tell for Windows. I advice to use Chrome (last version), Firefox -should- be fine, and the last version of Safari may also support it, although it does not use the resonance SDK (not supported properly, replaced by the HRTF Panner + convolution reverb to cheat the space) and may also cause strange behaviours. Not tested and adviced on other browsers.</p>
+      <p>I apologize for the people who may not be able to ear/see it. A video might be uploaded to demonstrate it.</p>
+      <p> <a href="http://p5js.org">p5js</a> was used for the visualisation.</p>
+    </div>
+    </div>
+  </div>
+  <div id="footer">
+   <span class="small">&copy; Charles Al Picasso 2019</span>
+ </div>
+ <!-- <div id="panel">
+    <button class="resonance">Use Resonance Audio</button>
+    <br/>
+    <button class="resonance">Use Panner</button>
+  </div> -->
+  <script src="simulacre.js"></script>
+</body>
+</html>
