@@ -453,6 +453,14 @@ function initApp ()
 
 function checkOptions () 
 {
+	var testExp = new RegExp('Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile' , 'i');
+	var isMobile = false;
+
+	if (testExp.test(navigator.userAgent))
+	{
+		isMobile = true;
+	}
+
 	var browserInfo = getBrowserInfo ();
 	if (browserInfo !== undefined)
 	{
@@ -468,7 +476,7 @@ function checkOptions ()
 				var vv =  parseFloat (va[2]);
 
 				// seems to be the correct setup for resonance audio
-				if (maj >= 72 && min >= 0 && vv >= 3626)
+				if (isMobile === false && maj >= 72 && min >= 0 && vv >= 3626)
 				{
 
 					APP_.useResonanceAudio = true;

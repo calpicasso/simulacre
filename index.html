@@ -81,7 +81,7 @@
     padding-bottom: 2px;
 
     /* height: 50%; */
-    z-index: 100;
+    z-index: 1;
     display:block;
   }
 
@@ -169,6 +169,46 @@
     color: #faa;
   }
 
+   @media (max-aspect-ratio: 4/5) 
+  {
+    #info
+    {
+      width: 100%;
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+    }
+
+    #headinfo 
+    {
+      margin: 0 0 0 0;
+      margin-left: 10%;
+      margin-top: 20%;
+    }
+
+    #headinfo h1 {
+      font-size: 5vw;
+    }
+
+    #headinfo h2 {
+      font-size: 4vw;
+    }
+
+    #desc {
+      width: 80%;
+      max-height: 400px;
+      overflow: auto;
+    }
+
+    .link {
+      padding: 0 0 0 0;
+      margin: 0 0 0 0;
+      position: absolute;
+      left: 10%;
+      top: 3%;
+      font-size: 7vw;
+    }
+  }
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
@@ -182,7 +222,7 @@
 </head>
 <body>
   <div id="info">
-    <a class="link" href="http://localhost/www_cpicasso"><i class="fas fa-arrow-left arrow"></i></a>
+    <a class="link" href="../../"><i class="fas fa-arrow-up arrow"></i></a>
     <div id="warning">
       <h2>Browser Not Supported</h2>
       <p>Sorry. This mini-app requires new HTML5 / WebAudio support. Please upgrade your browser if you wish to see it. </p>
